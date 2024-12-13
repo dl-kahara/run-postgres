@@ -1,0 +1,17 @@
+apiVersion: stackgres.io/v1
+kind: SGCluster
+metadata:
+  namespace: postgres
+  name: postgres
+spec:
+  instances: 1
+  postgres:
+    version: 'latest'
+  pods:
+    persistentVolume: 
+      size: '5Gi'
+    postgresServices:
+      primary:
+        type: NodePort
+      replicas:
+        type: NodePort
