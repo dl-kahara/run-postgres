@@ -1,0 +1,18 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  namespace: postgres
+  name: postgres-subscription
+spec:
+  channel: stable
+  name: stackgres
+  source: operatorhubio-catalog
+  sourceNamespace: olm
+  installPlanApproval: Automatic
+  # Could start with an older version, then assessing how upgrading works
+  # in practice with the operator. This would require equivalent of
+  # "kubectl edit installplan -n postgres ..." and change of "spec.approved"
+  # to "true", for installation to be able to proceed:
+  #
+  # installPlanApproval: Manual
+  # startingCSV: stable.v1.14.1
